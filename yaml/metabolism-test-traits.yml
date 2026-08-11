@@ -1,0 +1,51 @@
+- type: trait
+  id: ArtificialMetabolism
+  name: Artificial Metabolism
+  description: You are capable of metabolising synthetic chemicals.
+  category: Medical
+  cost: 1
+  conditions:
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  - !type:IsSpeciesCondition
+    species: Vox
+    invert: true
+  effects:
+  - !type:AddMetabolismCategoryEffect
+    categories: [ Artificial ]
+    
+- type: trait
+  id: ArtificialMetabolismExclusive
+  name: Artificial Metabolism (Exclusive)
+  description: You are ONLY capable of metabolising synthetic chemicals.
+  category: Medical
+  cost: 1
+  conditions:
+  - !type:IsSpeciesCondition
+    species: IPC
+    invert: true
+  effects:
+  - !type:AddMetabolismCategoryEffect
+    categories: [ Artificial ]
+  - !type:RemMetabolismCategoryEffect
+    categories: [ Organic ]
+
+- type: trait
+  id: OrganicMetabolismExclusive
+  name: Organic Metabolism (Exclusive)
+  description: You are ONLY capable of metabolising organic chemicals.
+  category: Medical
+  cost: 1
+  conditions:
+  - !type:AnyOfCondition
+    conditions:
+    - !type:IsSpeciesCondition
+      species: IPC
+    - !type:IsSpeciesCondition
+      species: Vox
+  effects:
+  - !type:AddMetabolismCategoryEffect
+    categories: [ Organic ]
+  - !type:RemMetabolismCategoryEffect
+    categories: [ Artificial ]
