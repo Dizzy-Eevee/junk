@@ -1,0 +1,38 @@
+- type: trait
+  id: AnimalMetabolism
+  name: animal metabolism
+  description: adds animal metabolizer to the stomach
+  category: Medical
+  cost: 1
+  effects:
+  - !type:AddMetabolizerTypeEffect
+    types: [ Animal ]
+    organWhitelist:
+      components:
+      - Stomach
+      
+- type: trait
+  id: NoLungMetabolism
+  name: no lung metabolism
+  description: fuck you no breathing
+  category: Medical
+  cost: 1
+  effects:
+  - !type:RemMetabolizerTypeEffect
+    types: [ Human, Plant, Thaven, Animal, Moth, Slime, Synthetic, Vox ]
+    organWhitelist:
+      components:
+      - Lung   
+      
+- type: trait
+  id: OnlyAnimalMetabolism
+  name: only animal metabolism
+  description: replaces the stomach's metabolizer with animal
+  category: Medical
+  cost: 1
+  effects:
+  - !type:ReplaceMetabolizerTypeEffect
+    types: [ Animal ]
+    organWhitelist:
+      components:
+      - Stomach
